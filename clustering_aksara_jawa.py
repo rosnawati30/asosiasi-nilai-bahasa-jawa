@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.cluster import KMeans
 from sklearn.metrics import davies_bouldin_score
 
-data = pd.read_excel('nilai_bahasa_indonesia.xlsx')
+data = pd.read_excel('nilai_bahasa_jawa.xlsx')
 
 train_set, test_set = train_test_split(data, test_size=0.2, random_state=42)
 
@@ -25,4 +25,5 @@ test_db_index = davies_bouldin_score(test_set.drop(columns=['Cluster']), cluster
 
 print("Davies-Bouldin Index (training set):", train_db_index)
 print("Davies-Bouldin Index (testing set):", test_db_index)
+
 
