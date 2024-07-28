@@ -12,6 +12,7 @@ trx = data.apply(lambda x: x.name + '=' + x).values.tolist()
 #encode transaksi 
 trx_encod = TransactionEncoder()
 trx_encod_ary = trx_encod.fit(trx).transform(trx)
+# print(trx_encod_ary)
 data_trans = pd.DataFrame(trx_encod_ary, columns=trx_encod.columns_)
 
 #menggunakan fp-growth dengna min_support = 0.2
@@ -21,16 +22,17 @@ print(frequent_itemset)
 # Menghitung rule asosiasi
 rules = association_rules(frequent_itemset, metric="confidence", min_threshold=0.4)
 print(rules)
+rules.to_csv('asosiasi.csv', index=False)
 
-#plotting
-plt.figure(figsize=(10,6))
-plt.scatter(rules['support'], rules['confidence'], alpha=0.5, c=rules['lift'], cmap='viridis')
-plt.colorbar(label='Lift')
-plt.xlabel('Support')
-plt.ylabel('Confidence')
-plt.title('Rule Asosiasi')
+# #plotting
+# plt.figure(figsize=(10,6))
+# plt.scatter(rules['support'], rules['confidence'], alpha=0.5, c=rules['lift'], cmap='viridis')
+# plt.colorbar(label='Lift')
+# plt.xlabel('Support')
+# plt.ylabel('Confidence')
+# plt.title('Rule Asosiasi')
 
-for i in range(len(rules)):
-    plt.annotate(f"R{i+1}", (rules['support'][i], rules['confidence'][i]), textcoords="offset points", xytext=(0,10), ha='center')
+# for i in range(len(rules)):
+#     plt.annotate(f"R{i+1}", (rules['support'][i], rules['confidence'][i]), textcoords="offset points", xytext=(0,10), ha='center')
 
-plt.show()
+# plt.show()

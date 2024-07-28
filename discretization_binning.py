@@ -4,9 +4,7 @@ import pandas as pd
 # load dataset
 data = pd.read_excel('aksara_jawa_dataset.xlsx')
 
-#menentukan lima kategori 
-# 0-20 (Sangat Rendah), 21-40 (Rendah), 41-60 (Sedang), 61-80 (Tinggi), 81-100 (Sangat Tinggi)
-thresholds = [0, 20, 40, 60, 80, 100]
+#kategori
 categories = ['Sangat Rendah', 'Rendah', 'Sedang', 'Tinggi', 'Sangat Tinggi']
 
 # discritize semua data di excel
